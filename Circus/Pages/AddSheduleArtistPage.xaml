@@ -1,0 +1,115 @@
+﻿<Page x:Class="Circus.Pages.AddSheduleArtistPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Circus.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AddSheduleArtistPage">
+
+    <Grid>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="ДОБАВЛЕНИЕ строки в расписание"
+            FontSize="40"
+            Margin="10"
+            Grid.Column="2"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+
+        <TextBlock Text="Дата и время выступления"
+                   Grid.Column="0" Grid.ColumnSpan="2"
+                   Grid.Row="3"
+                   HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Column="2"
+                    Grid.Row="3">
+            <DatePicker Name="DateDP"/>
+            <TextBox x:Name="TimeTb"/>
+        </StackPanel>
+
+        <TextBlock Text="Выступление"
+           Grid.Column="0"
+           Grid.Row="5"
+           HorizontalAlignment="Center"/>
+
+        <ComboBox Name="PerfomanceCb"
+                  Grid.Column="2"
+                  Grid.Row="5"
+                  Height="30"
+                  VerticalAlignment="Top"
+                  ItemsSource="{Binding perfomances}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="Артист"
+                   Grid.Column="3"
+                   Grid.Row="3"
+                   HorizontalAlignment="Center"/>
+
+        <ComboBox Name="ArtistCb"
+                  Grid.Column="4"
+                  Grid.Row="3"
+                  Height="30"
+                  VerticalAlignment="Top"
+                  ItemsSource="{Binding artists}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Surname}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Patronymic}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+  
+
+        <Button x:Name="BackBtn"
+                Content="Назад"
+                Grid.Column="1"
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                Width="250" Height="40" Click="BackBtn_Click" FontSize="30" RenderTransformOrigin="0.501,0.5" Background="#FF28729C" Foreground="White" FontFamily="Courier New"
+              />
+
+
+        <Button x:Name="AddBtn"
+                Content="Добавить"
+                Grid.Column="3"
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                Width="250" Height="40" Click="AddBtn_Click" RenderTransformOrigin="0.501,0.5" FontSize="30" Background="#FF28729C" Foreground="White" FontFamily="Courier New"
+                />
+
+    </Grid>
+</Page>

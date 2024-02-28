@@ -69,13 +69,8 @@ namespace Circus.Pages
 
         private void SheduleArtistBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddSheduleArtistPage());
         }
-
-        //private void AddArtistBTN_Click(object sender, RoutedEventArgs e)
-        //{
-        //    NavigationService.Navigate(new AddWorkerPage());
-        //}
 
         private void AddTaskBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -86,11 +81,6 @@ namespace Circus.Pages
         {
             NavigationService.Navigate(new AddAnimalPage());
         }
-
-        //private void AddAnimalTrainerBTN_Click(object sender, RoutedEventArgs e)
-        //{
-        //    NavigationService.Navigate(new AddWorkerPage());
-        //}
 
         private void WatchSheduleArtistBTN_Click(object sender, RoutedEventArgs e)
         {
