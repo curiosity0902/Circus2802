@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f63f181c6be481eaec744db134f5ced" Name="Diagram1">
+        <EntityTypeShape EntityType="CircussModel.Admin" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.AnimalTrainer" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Application" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Artist" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Cell" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Gender" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Perfomance" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Role" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.SheduleArtist" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.SheduleTrainers" Width="1.5" PointX="5.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Task" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CircussModel.Worker" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="CircussModel.FK_Admin_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Admin_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Application_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Task_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_AnimalTrainer_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_AnimalTrainer_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Application_Artist" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Artist_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Artist_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Concert_Artist" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Cell_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_SheduleTrainers_Cell" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Worker_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Concert_Perfomance" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Worker_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="CircussModel.FK_Task_Worker" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
