@@ -85,6 +85,7 @@ namespace Circus.Pages
                        
                     }
 
+
                     else if (PositionCB.SelectedIndex == 1)
                     {
                         artist.Surname = SurnameTB.Text.Trim();
