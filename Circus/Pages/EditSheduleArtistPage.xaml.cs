@@ -47,7 +47,7 @@ namespace Circus.Pages
                 var b = PerfomanceCb.SelectedItem as Perfomance;
                 StringBuilder error = new StringBuilder();
 
-                if (string.IsNullOrWhiteSpace(ArtistCb.Text) || string.IsNullOrWhiteSpace(PerfomanceCb.Text) || string.IsNullOrWhiteSpace(DateDP.Text) || string.IsNullOrWhiteSpace(TimeTb.Text))
+                if (string.IsNullOrWhiteSpace(ArtistCb.Text) || string.IsNullOrWhiteSpace(PerfomanceCb.Text) || string.IsNullOrWhiteSpace(DateDP.Text) || string.IsNullOrWhiteSpace(TimeTB.Text))
                 {
                     error.AppendLine("Заполните все поля!");
                 }
@@ -61,8 +61,8 @@ namespace Circus.Pages
                     var existingShedule = DBConnection.circussEntities.SheduleArtist.FirstOrDefault(s => s.IDSheduleArtist == contextSheduleArtist.IDSheduleArtist);
 
                     DateTime d = (DateTime)DateDP.SelectedDate;
-                    int hour = int.Parse(TimeTb.Text.Split(':')[0]);
-                    int minute = int.Parse(TimeTb.Text.Split(':')[1]);
+                    int hour = int.Parse(TimeTB.Text.Split(':')[0]);
+                    int minute = int.Parse(TimeTB.Text.Split(':')[1]);
                     DateTime dateTime = new DateTime(d.Year, d.Month, d.Day, hour, minute, 0);
                     existingShedule.Date = dateTime;
                     existingShedule.IDArtist = a.IDArtist;

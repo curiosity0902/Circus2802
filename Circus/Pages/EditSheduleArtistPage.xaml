@@ -31,28 +31,43 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="ДОБАВЛЕНИЕ строки в расписание"
-    FontSize="40"
+    FontSize="20"
     Margin="10"
-    Grid.Column="2"
+    Grid.Column="1"
     Grid.Row="0"
     Grid.RowSpan="2"
-    Grid.ColumnSpan="2"
+    Grid.ColumnSpan="4"
     HorizontalAlignment="Center"
     VerticalAlignment="Center"/>
 
-        <TextBlock Text="Дата и время выступления"
+        <TextBlock Text="Дата выступления"
            Grid.Column="0" Grid.ColumnSpan="2"
            Grid.Row="3"
            HorizontalAlignment="Center"/>
-
+        
+        <TextBlock Text="Время выступления"
+      Grid.Column="0" Grid.ColumnSpan="2"
+      Grid.Row="4"
+      HorizontalAlignment="Center"/>
+        
+        <TextBox x:Name="TimeTB" 
+                 Grid.Column ="2"          
+                 Grid.Row="4" 
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Center"
+                 FontSize="18"
+                 Width="180" 
+                 Text="{Binding Time}"></TextBox>
+        
         <StackPanel Grid.Column="2"
             Grid.Row="3">
-            <DatePicker Name="DateDP"/>
-            <TextBox x:Name="TimeTb"/>
+            <DatePicker Name="DateDP"
+            DataContext="{Binding Date}"/>
         </StackPanel>
 
         <TextBlock Text="Выступление"
    Grid.Column="0"
+   Grid.ColumnSpan="2"
    Grid.Row="5"
    HorizontalAlignment="Center"/>
 

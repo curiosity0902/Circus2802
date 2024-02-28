@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,12 @@ namespace Circus.Pages
         private void AddSheduleBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddSheduleArtistPage());
+        }
+
+        private void ArtistCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var a = ArtistCB.SelectedItem as Artist;
+            SheduleLV.ItemsSource = new List<SheduleArtist>(DBConnection.circussEntities.SheduleArtist.Where(x => x.IDArtist == a.IDArtist).ToList());
         }
     }
 }
