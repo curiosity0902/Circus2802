@@ -107,9 +107,10 @@ namespace Circus.Pages
                         animalTrainer.Surname = SurnameTB.Text.Trim();
                         animalTrainer.Name = NameTB.Text.Trim();
                         animalTrainer.Patronymic = PatronymicTB.Text.Trim();
-                        animalTrainer.DateOfBirth = DateOfBirthDP.SelectedDate.ToString();
+                        animalTrainer.DateOfBirth = DateOfBirthDP.SelectedDate;
                         animalTrainer.Login = EmailTB.Text.Trim();
                         animalTrainer.Password = PasswordTB.Text.Trim();
+                        
                         var a = PositionCB.SelectedItem as Role;
                         animalTrainer.IDRole = a.IDRole;
 
@@ -119,7 +120,7 @@ namespace Circus.Pages
                        
                     }
 
-                    else 
+                    else if (PositionCB.SelectedIndex == 3)
                     {
                         worker.Surname = SurnameTB.Text.Trim();
                         worker.Name = NameTB.Text.Trim();

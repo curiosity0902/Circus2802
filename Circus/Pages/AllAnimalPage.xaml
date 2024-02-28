@@ -119,22 +119,15 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        
+
                         <GridViewColumn Header ="Дрессировщик" Width="230">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                    <TextBlock Text="{Binding AnimalTrainer.Surname}"/>
+                                        <TextBlock Text="{Binding AnimalTrainer.Surname}"/>
                                         <TextBlock Text="{Binding AnimalTrainer.Name}"/>
                                         <TextBlock Text="{Binding AnimalTrainer.Patronymic}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header ="Фото" Width="230">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image Source="{Binding Photo}"/>
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

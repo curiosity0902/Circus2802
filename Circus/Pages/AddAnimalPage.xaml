@@ -5,10 +5,180 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Circus.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="AddAnimalPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-->ТЕКСТ РЕГИСТРАЦИЯ<-->
+        <TextBlock Text="РЕГИСТРАЦИЯ"
+      Grid.Column="2"
+      Grid.ColumnSpan="2"
+      Grid.Row="0"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      FontSize="50"/>
+
+
+        <!-->ТЕКСТ ИМЯ<-->
+        <TextBlock Text="Имя:"
+      Grid.Column="0"
+      FontSize="40"
+      Grid.ColumnSpan="2"
+      Grid.Row="1"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"/>
+
+        <TextBox x:Name="NameTB"
+      Grid.Column="1"
+      Grid.ColumnSpan="3"
+      Grid.Row="1"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Width="400"
+      Height="80"/>
+
+        <!--> ТЕКСТ ОТЧЕСТВО<-->
+        <TextBlock Text="Вес:"
+      Grid.Column="0"
+      Grid.ColumnSpan="1"
+      Grid.Row="2"
+      FontSize="40"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"/>
+
+        <TextBox x:Name="WeightTB"
+      Grid.Column="1"
+      Grid.ColumnSpan="2"
+      Grid.Row="2"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Width="400"
+      Height="80"/>
+
+        <TextBlock Grid.Row="3"
+  Grid.Column="0"
+  FontSize="40"
+  HorizontalAlignment="Left"
+  Text="Пол"
+  VerticalAlignment="Center" />
+
+        <ComboBox x:Name="GenderCB"
+  Grid.Row="3"
+  Grid.Column="1"
+  Grid.ColumnSpan="2"
+  Width="400"
+  Height="80"
+  HorizontalAlignment="Left"
+  VerticalAlignment="Center"
+  ItemsSource="{Binding genders}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!--> ТЕКСТ EMAIL<-->
+        <TextBlock Text="Предпочтения в еде:"
+      Grid.Column="0"
+      Grid.ColumnSpan="1"
+      Grid.Row="4"
+      FontSize="40"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"/>
+
+        <TextBox x:Name="FoodTB"
+      Grid.Column="1"
+      Grid.ColumnSpan="2"
+      Grid.Row="4"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Width="400"
+      Height="80"/>
+        <!--> ТЕКСТ EMAIL<-->
+        <TextBlock Text="Рекомендации:"
+      Grid.Column="3"
+      Grid.ColumnSpan="1"
+      Grid.Row="3"
+      FontSize="40"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"/>
+
+        <TextBox x:Name="RecommendationTB"
+      Grid.Column="4"
+      Grid.ColumnSpan="2"
+      Grid.Row="3"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Width="400"
+      Height="80"/>
+
+        <!-->ТЕКСТ ДР<-->
+        <TextBlock Text="Дата рождения:"
+      Grid.Column="3"
+      Grid.ColumnSpan="1"
+      Grid.Row="1"
+      FontSize="40"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"/>
+
+        <!-->КАЛЕНДАРЬ<-->
+        <DatePicker x:Name="DateOfBirthDP"
+      Grid.Column="4"
+      Grid.ColumnSpan="2"
+      Grid.Row="1"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Width="400"
+      Height="80"/>
+
+        <TextBlock Grid.Row="2"
+  Grid.Column="3"
+  FontSize="40"
+  HorizontalAlignment="Left"
+  Text="Дрессировщик"
+  Grid.ColumnSpan="2"
+  VerticalAlignment="Center"/>
+
+        <ComboBox x:Name="AnimalTrainerCB"
+  Grid.Row="2"
+  Grid.Column="4"
+  Grid.ColumnSpan="2"
+  Width="400"
+  Height="80"
+  HorizontalAlignment="Left"
+  VerticalAlignment="Center"
+  ItemsSource="{Binding animalTrainers}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Surname}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button x:Name="AddBtn" 
+          Grid.Column="4"
+          Grid.Row="4"
+          Grid.ColumnSpan="2"
+          Width="400"
+          Height="80"
+          FontSize="40"
+          Content="Добавить" Click="AddBtn_Click"/>
     </Grid>
 </Page>

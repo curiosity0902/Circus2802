@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5f63f181c6be481eaec744db134f5ced" Name="Diagram1">
+      <Diagram DiagramId="d8ce97c42fb8477e98704a75f8a976a7" Name="Diagram1">
         <EntityTypeShape EntityType="CircussModel.Admin" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="CircussModel.AnimalTrainer" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="CircussModel.Application" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />

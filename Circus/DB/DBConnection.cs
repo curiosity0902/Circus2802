@@ -8,7 +8,7 @@ namespace Circus.DB
 {
     internal class DBConnection
     {
-        public static CircussEntities circussEntities = new CircussEntities();
+        public static CircussEntities1 circussEntities = new CircussEntities1();
 
         public static Worker loginedWorker;
         public static Artist loginedArtist;
