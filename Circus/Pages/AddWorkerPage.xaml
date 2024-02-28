@@ -16,6 +16,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -166,11 +167,35 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         
+        <TextBlock Grid.Row="4"
+   Grid.Column="3"
+   FontSize="40"
+   HorizontalAlignment="Left"
+   Text="Пол"
+   Grid.ColumnSpan="2"
+   VerticalAlignment="Center"/>
+        
+        <ComboBox x:Name="GenderCB"
+Grid.Row="4"
+Grid.Column="4"
+Grid.ColumnSpan="2"
+Width="400"
+Height="80"
+HorizontalAlignment="Left"
+VerticalAlignment="Center"
+ItemsSource="{Binding genders}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
         <Button x:Name="AddBtn" 
-                Grid.Column="4"
+                Grid.Column="6"
                 Grid.Row="4"
-                Grid.ColumnSpan="2"
-                Width="400"
+                Grid.ColumnSpan="1"
+                Width="250"
                 Height="80"
                 FontSize="40"
                 Content="Добавить" Click="AddBtn_Click"/>

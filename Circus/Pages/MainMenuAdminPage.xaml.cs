@@ -74,7 +74,7 @@ namespace Circus.Pages
 
         private void AddTaskBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddTaskPage());
         }
 
         private void AddAnimalBTN_Click(object sender, RoutedEventArgs e)

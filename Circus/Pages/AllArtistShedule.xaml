@@ -59,17 +59,22 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header ="Дата и время ыыступления">
+                        <GridViewColumn Header="Дата" Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Date, StringFormat = dd.MM.yyyy}"/>
-                                        <TextBlock Text="{Binding Time, StringFormat = HH:mm}"/>
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding Date}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                       
+
+                        <GridViewColumn Header="Время" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Time}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                         <GridViewColumn Header ="Выступление">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -111,7 +116,7 @@
             Click="BackBTN_Click"  Background="#FF28729C" Foreground="White" FontFamily="Courier New"
                />
         <Button x:Name="EditSheduleBTN"
-        Content="Изменить сотрудника"
+        Content="Изменить"
         FontWeight="DemiBold"
         FontSize="20"
         Margin="10"

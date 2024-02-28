@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,23 +28,14 @@ namespace Circus.Pages
         //public static Worker loggedWorker;
 
         SheduleArtist contextSheduleArtist;
-        private void InitializeDataInPage()
-        {
-            artists = DBConnection.circussEntities.Artist.ToList();
-            perfomances = DBConnection.circussEntities.Perfomance.ToList();
-            sheduleArtists = DBConnection.circussEntities.SheduleArtist.ToList();
-            this.DataContext = this;
-    
-            DateDP.SelectedDate = contextSheduleArtist.Date;
-            TimeTb.Text = contextSheduleArtist.Time.ToString();
-            ArtistCb.SelectedIndex = (int)contextSheduleArtist.IDArtist - 1;
-            PerfomanceCb.SelectedIndex = (int)contextSheduleArtist.IDPerfomance - 1;    
-        }
         public EditSheduleArtistPage(SheduleArtist sheduleArtist)
         {
             InitializeComponent();
+            artists = DBConnection.circussEntities.Artist.ToList();
+            perfomances = DBConnection.circussEntities.Perfomance.ToList();
+            sheduleArtists = DBConnection.circussEntities.SheduleArtist.ToList();
+
             contextSheduleArtist = sheduleArtist;
-            InitializeDataInPage();
             this.DataContext = this;
         }
 
@@ -51,40 +43,40 @@ namespace Circus.Pages
         {
             try
             {
+                var a = ArtistCb.SelectedItem as Artist;
+                var b = PerfomanceCb.SelectedItem as Perfomance;
                 StringBuilder error = new StringBuilder();
-                SheduleArtist sheduleArtist = contextSheduleArtist;
-                if (string.IsNullOrWhiteSpace(TimeTb.Text) ||
-                        DateDP.SelectedDate == null)
+
+                if (string.IsNullOrWhiteSpace(ArtistCb.Text) || string.IsNullOrWhiteSpace(PerfomanceCb.Text) || string.IsNullOrWhiteSpace(DateDP.Text) || string.IsNullOrWhiteSpace(TimeTb.Text))
                 {
                     error.AppendLine("Заполните все поля!");
                 }
+
                 if (error.Length > 0)
                 {
                     MessageBox.Show(error.ToString());
                 }
                 else
                 {
-                    DateDP.SelectedDate = contextSheduleArtist.Date;
-                    TimeTb.Text = contextSheduleArtist.Time.ToString();
-                    ArtistCb.SelectedIndex = (int)contextSheduleArtist.IDArtist - 1;
-                    PerfomanceCb.SelectedIndex = (int)contextSheduleArtist.IDPerfomance - 1;
-                    DBConnection.circussEntities.SaveChanges();
+                    var existingShedule = DBConnection.circussEntities.SheduleArtist.FirstOrDefault(s => s.IDSheduleArtist == contextSheduleArtist.IDSheduleArtist);
 
-                    TimeTb.Text = String.Empty;
-                    DateDP = null;
-                    ArtistCb.Text = String.Empty;
-                    PerfomanceCb.Text = String.Empty;
-
+                    DateTime d = (DateTime)DateDP.SelectedDate;
+                    int hour = int.Parse(TimeTb.Text.Split(':')[0]);
+                    int minute = int.Parse(TimeTb.Text.Split(':')[1]);
+                    DateTime dateTime = new DateTime(d.Year, d.Month, d.Day, hour, minute, 0);
+                    existingShedule.Date = dateTime;
+                    existingShedule.IDArtist = a.IDArtist;
+                    existingShedule.IDPerfomance = b.IDPerfomance;
                     DBConnection.circussEntities.SaveChanges();
                     NavigationService.Navigate(new AllArtistShedule());
                 }
+
             }
             catch
             {
-                MessageBox.Show("Произошла ошибка!");
+                MessageBox.Show("Ой, какая-то ошибка");
             }
-        }
-
+        }   
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AllArtistShedule());

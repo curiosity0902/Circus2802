@@ -71,10 +71,10 @@ namespace Circus.Pages
             {
                 NavigationService.Navigate(new MainMenuArtist());
             }
-           else
+           if (currentWorker == null && currentAdmin == null && currentAnimalTrainer == null && currentArtist == null )
 
            {
-                MessageBox.Show("Неверный логин или пароль. Попробуйте снова.");
+                MessageBox.Show("Такого человека не существует.");
            }
         }
     }  

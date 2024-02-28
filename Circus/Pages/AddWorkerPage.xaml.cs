@@ -26,6 +26,7 @@ namespace Circus.Pages
         public static List<AnimalTrainer> animalTrainers { get; set; }
         public static List<Artist> artists { get; set; }
         public static List<Role> roles { get; set; }
+        public static List<Gender> genders { get; set; }
 
 
         public static Worker worker = new Worker();
@@ -41,33 +42,38 @@ namespace Circus.Pages
             animalTrainers = DBConnection.circussEntities.AnimalTrainer.ToList();
             admins = DBConnection.circussEntities.Admin.ToList();
             roles = DBConnection.circussEntities.Role.ToList();
+            genders = DBConnection.circussEntities.Gender.ToList();
             this.DataContext = this;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var a = PositionCB.SelectedItem as Role;
+            var b = GenderCB.SelectedItem as Gender;
+            StringBuilder error = new StringBuilder();
+
+            if (string.IsNullOrWhiteSpace(SurnameTB.Text) || string.IsNullOrWhiteSpace(NameTB.Text) || string.IsNullOrWhiteSpace(PatronymicTB.Text)
+               || string.IsNullOrWhiteSpace(GenderCB.Text) || string.IsNullOrWhiteSpace(PasswordTB.Text) || DateOfBirthDP.SelectedDate == null || string.IsNullOrWhiteSpace(EmailTB.Text)
+               || string.IsNullOrWhiteSpace(PositionCB.Text))
             {
-                StringBuilder error = new StringBuilder();
+                error.AppendLine("Заполните все поля!");
+            }
 
-                if (string.IsNullOrWhiteSpace(SurnameTB.Text) || string.IsNullOrWhiteSpace(NameTB.Text) || string.IsNullOrWhiteSpace(PatronymicTB.Text)
-                   || string.IsNullOrWhiteSpace(EmailTB.Text) || string.IsNullOrWhiteSpace(PasswordTB.Text) || DateOfBirthDP.SelectedDate == null)
-                {
-                    error.AppendLine("Заполните все поля!");
-                }
+            if (error.Length > 0)
+            {
+                MessageBox.Show(error.ToString());
+            }
 
-                if (DateOfBirthDP.SelectedDate != null && (DateTime.Now - (DateTime)DateOfBirthDP.SelectedDate).TotalDays < 365 * 18 + 4)
+            else
+            {
+                if (PositionCB.SelectedIndex == 0)
                 {
-                    error.AppendLine("Сотрудник не может быть младше 18 лет.");
-                }
-                if (error.Length > 0)
-                {
-                    MessageBox.Show(error.ToString());
-                }
+                    if (DateOfBirthDP.SelectedDate != null && (DateTime.Now - (DateTime)DateOfBirthDP.SelectedDate).TotalDays < 365 * 18 + 4)
+                    {
+                        error.AppendLine("Сотрудник не может быть младше 18 лет.");
+                    }
 
-                else
-                {
-                    if (PositionCB.SelectedIndex == 0)
+                    else
                     {
                         admin.Surname = SurnameTB.Text.Trim();
                         admin.Name = NameTB.Text.Trim();
@@ -75,18 +81,25 @@ namespace Circus.Pages
                         admin.DateOfBirth = DateOfBirthDP.SelectedDate;
                         admin.Login = EmailTB.Text.Trim();
                         admin.Password = PasswordTB.Text.Trim();
-                        var a = PositionCB.SelectedItem as Role;
                         admin.IDRole = a.IDRole;
+                        admin.IDGender = b.IDGender;
 
-                    
+
                         DBConnection.circussEntities.Admin.Add(admin);
                         DBConnection.circussEntities.SaveChanges();
                         NavigationService.Navigate(new AllWorkersPage());
-                       
                     }
 
+                }
 
-                    else if (PositionCB.SelectedIndex == 1)
+
+                if (PositionCB.SelectedIndex == 1)
+                {
+                    if (DateOfBirthDP.SelectedDate != null && (DateTime.Now - (DateTime)DateOfBirthDP.SelectedDate).TotalDays < 365 * 18 + 4)
+                    {
+                        error.AppendLine("Сотрудник не может быть младше 18 лет.");
+                    }
+                    else
                     {
                         artist.Surname = SurnameTB.Text.Trim();
                         artist.Name = NameTB.Text.Trim();
@@ -94,15 +107,22 @@ namespace Circus.Pages
                         artist.DateOfBirth = DateOfBirthDP.SelectedDate;
                         artist.Login = EmailTB.Text.Trim();
                         artist.Password = PasswordTB.Text.Trim();
-                        var a = PositionCB.SelectedItem as Role;
+                        artist.IDGender = b.IDGender;
                         artist.IDRole = a.IDRole;
 
-                            DBConnection.circussEntities.Artist.Add(artist);
-                            DBConnection.circussEntities.SaveChanges();
-                            NavigationService.Navigate(new AllWorkersPage());
+                        DBConnection.circussEntities.Artist.Add(artist);
+                        DBConnection.circussEntities.SaveChanges();
+                        NavigationService.Navigate(new AllWorkersPage());
                     }
+                }
 
-                    else if (PositionCB.SelectedIndex == 2)
+                if (PositionCB.SelectedIndex == 2)
+                {
+                    if (DateOfBirthDP.SelectedDate != null && (DateTime.Now - (DateTime)DateOfBirthDP.SelectedDate).TotalDays < 365 * 18 + 4)
+                    {
+                        error.AppendLine("Сотрудник не может быть младше 18 лет.");
+                    }
+                    else
                     {
                         animalTrainer.Surname = SurnameTB.Text.Trim();
                         animalTrainer.Name = NameTB.Text.Trim();
@@ -110,17 +130,22 @@ namespace Circus.Pages
                         animalTrainer.DateOfBirth = DateOfBirthDP.SelectedDate;
                         animalTrainer.Login = EmailTB.Text.Trim();
                         animalTrainer.Password = PasswordTB.Text.Trim();
-                        
-                        var a = PositionCB.SelectedItem as Role;
                         animalTrainer.IDRole = a.IDRole;
+                        animalTrainer.IDGender = b.IDGender;
 
-                            DBConnection.circussEntities.AnimalTrainer.Add(animalTrainer);
-                            DBConnection.circussEntities.SaveChanges();
-                            NavigationService.Navigate(new AllWorkersPage());
-                       
+                        DBConnection.circussEntities.AnimalTrainer.Add(animalTrainer);
+                        DBConnection.circussEntities.SaveChanges();
+                        NavigationService.Navigate(new AllWorkersPage());
                     }
+                }
 
-                    else if (PositionCB.SelectedIndex == 3)
+                if (PositionCB.SelectedIndex == 3)
+                {
+                    if (DateOfBirthDP.SelectedDate != null && (DateTime.Now - (DateTime)DateOfBirthDP.SelectedDate).TotalDays < 365 * 18 + 4)
+                    {
+                        error.AppendLine("Сотрудник не может быть младше 18 лет.");
+                    }
+                    else
                     {
                         worker.Surname = SurnameTB.Text.Trim();
                         worker.Name = NameTB.Text.Trim();
@@ -128,22 +153,16 @@ namespace Circus.Pages
                         worker.DateOfBirth = DateOfBirthDP.SelectedDate;
                         worker.Login = EmailTB.Text.Trim();
                         worker.Password = PasswordTB.Text.Trim();
-                        var a = PositionCB.SelectedItem as Role;
+                        worker.IDGender = b.IDGender;
                         worker.IDRole = a.IDRole;
 
-                            DBConnection.circussEntities.Worker.Add(worker);
-                            DBConnection.circussEntities.SaveChanges();
-                            NavigationService.Navigate(new AllWorkersPage());
-                       
+                        DBConnection.circussEntities.Worker.Add(worker);
+                        DBConnection.circussEntities.SaveChanges();
+                        NavigationService.Navigate(new AllWorkersPage());
                     }
                 }
             }
 
-            catch
-            {
-                MessageBox.Show("Заполните все поля!");
-            }
         }
-            
     }
 }
