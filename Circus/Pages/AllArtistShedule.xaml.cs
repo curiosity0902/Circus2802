@@ -45,7 +45,11 @@ namespace Circus.Pages
 
         private void EditSheduleBTN_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddSheduleArtistPage());
+            if (SheduleLV.SelectedItem is SheduleArtist)
+            {
+                DBConnection.selectedForEditShedule = SheduleLV.SelectedItem as SheduleArtist;
+                NavigationService.Navigate(new EditSheduleArtistPage(SheduleLV.SelectedItem as SheduleArtist));
+            }
         }
 
         private void AddSheduleBTN_Click(object sender, RoutedEventArgs e)

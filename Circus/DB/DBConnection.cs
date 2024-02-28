@@ -14,5 +14,7 @@ namespace Circus.DB
         public static Artist loginedArtist;
         public static Admin loginedAdmin;
         public static AnimalTrainer loginedAnimalTrainer;
+
+        public static SheduleArtist selectedForEditShedule;
     }
 }
