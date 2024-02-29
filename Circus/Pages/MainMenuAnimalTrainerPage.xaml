@@ -9,6 +9,88 @@
       Title="MainMenuAnimalTrainerPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="AnimalSheduleLV"
+                  Grid.Column="1" Grid.ColumnSpan="6"
+                  Grid.Row="2" Grid.RowSpan="3">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+
+                        <GridViewColumn Header="Вольер" Width="160">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Cell.Name}"></TextBlock>
+                                        <TextBlock Text="{Binding Cell.AgeDate}"/>
+               
+                                    </StackPanel>
+
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Описание" Width="170">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Description}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Дата" Width="170" x:Name="DateOfTrainer" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="CommentTB" Text="{Binding DateOfTrainer}"></TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Время" Width="170" x:Name="Time" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="CommentTB" Text="{Binding Time}"></TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Выполнено" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <RadioButton IsChecked="{Binding Done}" Click="RadioButton_Click"></RadioButton>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Назад"
+            x:Name="BackBTN"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.Row="9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="400"
+            Height="60"
+            Click="BackBTN_Click"  Background="#FF28729C" Foreground="White" FontFamily="Courier New"  FontSize="35"
+            />
     </Grid>
 </Page>
