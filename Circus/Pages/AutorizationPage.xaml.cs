@@ -69,7 +69,7 @@ namespace Circus.Pages
 
             if (currentArtist != null)
             {
-                NavigationService.Navigate(new MainMenuArtist());
+                NavigationService.Navigate(new AllArtistShedule());
             }
            if (currentWorker == null && currentAdmin == null && currentAnimalTrainer == null && currentArtist == null )
 

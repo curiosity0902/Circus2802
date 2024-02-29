@@ -134,6 +134,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
           <Property Name="Done" Type="bit" />
           <Property Name="Comment" Type="nvarchar" MaxLength="100" />
+          <Property Name="Viewed" Type="bit" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -582,6 +583,7 @@
           <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Admin" Relationship="Self.FK_Task_Admin" FromRole="Task" ToRole="Admin" />
           <NavigationProperty Name="Worker" Relationship="Self.FK_Task_Worker" FromRole="Task" ToRole="Worker" />
+          <Property Name="Viewed" Type="Boolean" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -1010,6 +1012,7 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="CircussModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Viewed" ColumnName="Viewed" />
                 <ScalarProperty Name="IDTask" ColumnName="IDTask" />
                 <ScalarProperty Name="IDAdmin" ColumnName="IDAdmin" />
                 <ScalarProperty Name="IDWorker" ColumnName="IDWorker" />

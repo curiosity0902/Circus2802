@@ -20,6 +20,7 @@ namespace Circus.DB
         public string Description { get; set; }
         public Nullable<bool> Done { get; set; }
         public string Comment { get; set; }
+        public Nullable<bool> Viewed { get; set; }
     
         public virtual Admin Admin { get; set; }
         public virtual Worker Worker { get; set; }

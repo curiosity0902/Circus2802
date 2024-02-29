@@ -36,11 +36,14 @@ namespace Circus.Pages
             loggedUser = DBConnection.loginedWorker;
             workers = new List<Worker>(DBConnection.circussEntities.Worker.ToList());
             tasks = new List<DB.Task>(DBConnection.circussEntities.Task.Where(x => x.IDWorker == loggedUser.IDWorker && x.Done != true).ToList());
-            TaskLV.ItemsSource = tasks;
+            //TaskLV.ItemsSource = tasks;
             this.DataContext = this;
-            //CheckConditionAndToggleButtonVisibility();
+            Refresh();            
         }
-
+        private void Refresh()
+        {
+            TaskLV.ItemsSource = DBConnection.circussEntities.Task.ToList();
+        }
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
