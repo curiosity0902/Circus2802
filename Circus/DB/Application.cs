@@ -18,6 +18,7 @@ namespace Circus.DB
         public Nullable<int> IDAdmin { get; set; }
         public Nullable<int> IDArtist { get; set; }
         public string Description { get; set; }
+        public Nullable<bool> Done { get; set; }
     
         public virtual Admin Admin { get; set; }
         public virtual Artist Artist { get; set; }

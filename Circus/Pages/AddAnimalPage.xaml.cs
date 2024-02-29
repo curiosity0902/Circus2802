@@ -34,33 +34,49 @@ namespace Circus.Pages
             animalTrainers = DBConnection.circussEntities.AnimalTrainer.ToList();
             this.DataContext = this;
         }
+        private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = IsTextNumeric(e.Text);
+
+        }
+
+
+        private static bool IsTextNumeric(string str)
+        {
+            System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("[^0-9]");
+            return reg.IsMatch(str);
+
+        }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                var a = GenderCB.SelectedItem as Gender;
+                var b = AnimalTrainerCB.SelectedItem as AnimalTrainer;
                 StringBuilder error = new StringBuilder();
+
                 if (string.IsNullOrWhiteSpace(FoodTB.Text) || string.IsNullOrWhiteSpace(NameTB.Text) || string.IsNullOrWhiteSpace(RecommendationTB.Text) ||
                         DateOfBirthDP.SelectedDate == null || string.IsNullOrWhiteSpace(WeightTB.Text))
                 {
                     error.AppendLine("Заполните все поля!");
                 }
+
                 if (error.Length > 0)
                 {
                     MessageBox.Show(error.ToString());
                 }
+
                 else
                 {
                     cell.Recommendations = RecommendationTB.Text.Trim();
                     cell.Name = NameTB.Text.Trim();
                     cell.AgeDate = DateOfBirthDP.SelectedDate;
                     cell.FoodPreferences = FoodTB.Text.Trim();
-                    cell.Weight = int.Parse(WeightTB.Text);
+                    cell.Weight = int.Parse(WeightTB.Text.Trim());
          
-                    var a = GenderCB.SelectedItem as Gender;
+                    
                     cell.IDGender = a.IDGender;
-
-                    var b = AnimalTrainerCB.SelectedItem as AnimalTrainer;
                     cell.IDAnimalTrainer = b.IDAnimalTrainer;
 
                     DBConnection.circussEntities.Cell.Add(cell);

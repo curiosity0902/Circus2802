@@ -19,54 +19,43 @@ using Circus.DB;
 namespace Circus.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainMenuWorkerPage.xaml
+    /// Логика взаимодействия для AlTaskPage.xaml
     /// </summary>
-    public partial class MainMenuWorkerPage : Page
+    public partial class AlTaskPage : Page
     {
-
         public static List<Admin> admins { get; set; }
         public static List<Worker> workers { get; set; }
         public static List<DB.Task> tasks { get; set; }
 
-        public static Worker loggedUser;
-        public MainMenuWorkerPage()
+        public static Admin loggedUser;
+        public AlTaskPage()
         {
             InitializeComponent();
             admins = new List<Admin>(DBConnection.circussEntities.Admin.ToList());
-            loggedUser = DBConnection.loginedWorker;
+            loggedUser = DBConnection.loginedAdmin;
             workers = new List<Worker>(DBConnection.circussEntities.Worker.ToList());
-            tasks = new List<DB.Task>(DBConnection.circussEntities.Task.Where(x => x.IDWorker == loggedUser.IDWorker && x.Done != true).ToList());
-            TaskLV.ItemsSource = tasks;
+            tasks = new List<DB.Task>(DBConnection.circussEntities.Task.Where(x => x.IDAdmin == loggedUser.IDAdmin && x.Viewed != true).ToList());
             this.DataContext = this;
-            //CheckConditionAndToggleButtonVisibility();
+            TaskLV.ItemsSource = tasks;
         }
-
-
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
-            var existingShedule = DBConnection.circussEntities.Task.FirstOrDefault(s => s.IDWorker == loggedUser.IDWorker);
+            var existingShedule = DBConnection.circussEntities.Task.FirstOrDefault(s => s.IDAdmin == loggedUser.IDAdmin);
             if (TaskLV.SelectedItems.Count > 0)
             {
                 DataRowView row = TaskLV.SelectedItem as DataRowView; // Получаем выбранную строку как DataRowView
 
                 if (row != null)
                 {
-                    string textFromColumn2 = row["Комментарий"].ToString(); // Получаем значение из столбца "Column2"
 
-                    // Далее вы можете использовать textFromColumn2 в вашем коде
-                    existingShedule.Comment = textFromColumn2;
+                    existingShedule.Viewed = true;
                     DBConnection.circussEntities.SaveChanges();
                 }
 
             }
-            existingShedule.Done = true;
-            DBConnection.circussEntities.SaveChanges();
-            NavigationService.Navigate(new MainMenuWorkerPage());
-        }
 
-        private void BackBTN_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AutorizationPage());
+            DBConnection.circussEntities.SaveChanges();
+            NavigationService.Navigate(new AlTaskPage());
         }
     }
 }

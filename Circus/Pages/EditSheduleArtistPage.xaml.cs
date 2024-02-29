@@ -74,7 +74,7 @@ namespace Circus.Pages
             }
             catch
             {
-                MessageBox.Show("Ой, какая-то ошибка");
+                MessageBox.Show("Ошибка");
             }
         }   
         private void BackBtn_Click(object sender, RoutedEventArgs e)

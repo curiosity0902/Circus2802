@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CircussModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CircussModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="IDAdmin" />
@@ -42,6 +42,7 @@
           <Property Name="IDAdmin" Type="int" />
           <Property Name="IDArtist" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Done" Type="bit" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -419,8 +420,7 @@
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CircussModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -469,6 +469,7 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Admin" Relationship="Self.FK_Application_Admin" FromRole="Application" ToRole="Admin" />
           <NavigationProperty Name="Artist" Relationship="Self.FK_Application_Artist" FromRole="Application" ToRole="Artist" />
+          <Property Name="Done" Type="Boolean" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -910,6 +911,7 @@
           <EntitySetMapping Name="Application">
             <EntityTypeMapping TypeName="CircussModel.Application">
               <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Done" ColumnName="Done" />
                 <ScalarProperty Name="IDApplication" ColumnName="IDApplication" />
                 <ScalarProperty Name="IDAdmin" ColumnName="IDAdmin" />
                 <ScalarProperty Name="IDArtist" ColumnName="IDArtist" />

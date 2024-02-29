@@ -135,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddApplicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddSheduleArtistPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,11 +155,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AllApplicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AllArtistShedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AllWorkersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AlTaskPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,6 +200,9 @@
     <Compile Include="Pages\AddAnimalPage.xaml.cs">
       <DependentUpon>AddAnimalPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddApplicationPage.xaml.cs">
+      <DependentUpon>AddApplicationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddSheduleArtistPage.xaml.cs">
       <DependentUpon>AddSheduleArtistPage.xaml</DependentUpon>
     </Compile>
@@ -200,11 +215,17 @@
     <Compile Include="Pages\AllAnimalPage.xaml.cs">
       <DependentUpon>AllAnimalPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AllApplicationPage.xaml.cs">
+      <DependentUpon>AllApplicationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AllArtistShedule.xaml.cs">
       <DependentUpon>AllArtistShedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AllWorkersPage.xaml.cs">
       <DependentUpon>AllWorkersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AlTaskPage.xaml.cs">
+      <DependentUpon>AlTaskPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AutorizationPage.xaml.cs">
       <DependentUpon>AutorizationPage.xaml</DependentUpon>
